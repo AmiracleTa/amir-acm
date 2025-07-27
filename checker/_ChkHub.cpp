@@ -61,8 +61,9 @@ const string PATH_EXE_CORRECT = "_correct.exe";
 const string PATH_EXE_MINE = "_mine.exe";
 
 // compile cmd // 自行更改编译参数
-const string CMD_CORRECT = "g++ -std=c++23 " + PATH_CORRECT + " -o " + PATH_EXE_CORRECT;
-const string CMD_MINE = "g++ -std=c++23 " + PATH_MINE + " -o " + PATH_EXE_MINE;
+const string VER = "-std=c++23";
+const string CMD_CORRECT = "g++ " + VER + " " + PATH_CORRECT + " -o " + PATH_EXE_CORRECT;
+const string CMD_MINE = "g++ " + VER + " " + PATH_MINE + " -o " + PATH_EXE_MINE;
 
 
 
@@ -160,9 +161,9 @@ void work(){
 // 需根据实际样例改写
 void gen_input(){  
     std::ofstream ofs(PATH_IN); // output file stream  
-//** 注意是 ofs 输入到文件 **//
+//** 注意是 ofs 输入到文件 , 并非 cout **//
 // 示例
-    int t = 50;
+    int t = 50; // 多测
     ofs << t << '\n';
     
     while(t--){
@@ -173,6 +174,7 @@ void gen_input(){
     }
 
 }
+
 
 // 测试接口 // 测试比如 random
 void test(){
@@ -213,34 +215,36 @@ int main(){
 
 
 /* 
-// ACCEPTED - or DEBUG TILL DEATH.
+// ACCEPTED - or - DEBUG TILL DEATH.
 
 
 // description
   随机生成大量数据, 然后和正确代码对拍
   以找到错误样例, 调试出难以察觉的错误, 节约时间
 
-  复制粘贴代码,
-  写 gen_input(),
-  即可
-
  
 // instructions
 .for useing **
-  
+
+  0. 本文件需要修改的有 gen_input() , 文件开头的 编译参数(可能) , 文件路径(可能)
+
   1. _correct.cpp 写正确代码   _mine.cpp 写待测代码
-  2. 修改 gen_input(), 生成所需样例
+  2. 修改 gen_input(), 以生成所需样例
+  运行即可
+  
   3. _input.in 中为 gen_input() 生成的样例
   4. _rng_utils.hpp 有一些常用的随机函数  (虽然目前还很少
   5. 程序会对比 _output_correct , _output_mine 两个文件,
      即检查和 ans 输出是否相同,
      不同则结束本轮测试
-  6. 最好是多测形式 , 没多测要改成多测 , 要么会很慢
-  7. 运行信息请看 _check_log.out
+  6. 注意最好是多测形式 , 没多测要改成多测 , 要么会很慢
+  7. 测试信息请看 _check_log.out
+  8. 若无 c++23 , 可以改成 "-std=c++14(17)"
 
 .
 
 
+////
 .useless:
 (废话)
   需一份标答代码对拍, 若无, 可ai一份 正确|暴力 代码进行对拍找样例
