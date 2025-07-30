@@ -46,3 +46,15 @@ auto random_tree(int n){ // n vertex
     return edge;
 }
 
+// creat (n x m) 01 matrix
+auto random_01mat(int n, int m, double exp=0.5){ // exp - P(X=1) - probability of 1 occurring - inclusive[0.0, 1.0]
+    vector<vector<int>> mat(n, vector<int>(m));
+    vector<double> wt{1-exp, exp}; // weight
+    discrete_distribution<int> dist(wt.begin(), wt.end());
+    for(auto& vec : mat) for(auto& x : vec){
+        x = dist(rng);
+    }
+    return mat;
+}
+
+
