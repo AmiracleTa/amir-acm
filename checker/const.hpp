@@ -22,7 +22,7 @@ const string PATH_EXE_CORRECT = "correct.exe";
 const string PATH_EXE_MINE = "mine.exe";
 
 // compile cmd
-const string VER = "-std=c++26";
+const string VER = "-std=c++17";
 const string CMD_CORRECT = "g++ " + VER + " " + PATH_CORRECT + " -o " + PATH_EXE_CORRECT;
 const string CMD_MINE = "g++ " + VER + " " + PATH_MINE + " -o " + PATH_EXE_MINE;
 
